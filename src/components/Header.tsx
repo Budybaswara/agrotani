@@ -3,9 +3,10 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Leaf } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import clsx from "clsx";
+import Image from "next/image";
 
 const navigation = [
   { name: "Beranda", href: "/" },
@@ -34,10 +35,10 @@ export default function Header() {
   return (
     <header
       className={clsx(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-in-out",
+        "fixed inset-x-0 top-0 z-[100] transition-all duration-300 ease-in-out",
         isScrolled
-          ? "bg-white/90 backdrop-blur-md shadow-sm py-3"
-          : "bg-transparent py-5"
+          ? "bg-white shadow-md py-2"
+          : "bg-transparent py-4"
       )}
     >
       <nav
@@ -45,17 +46,17 @@ export default function Header() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2 group">
-            <div className="bg-[var(--color-palm-600)] text-white p-1.5 rounded-lg group-hover:bg-[var(--color-gold-500)] transition-colors">
-              <Leaf className="w-6 h-6" />
+          <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-3 group">
+            <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white/50 bg-white shadow-sm transition-transform group-hover:scale-105">
+              <Image src="/logo.jpg" alt="Logo Koperasi Agro Binatani Lestari" fill className="object-contain" />
             </div>
             <span
               className={clsx(
-                "font-bold text-lg tracking-tight transition-colors",
-                isScrolled ? "text-[var(--color-forest-900)]" : "text-white"
+                "font-bold text-lg tracking-tight transition-colors hidden sm:block",
+                isScrolled ? "text-[var(--color-forest-900)]" : "text-white drop-shadow-md"
               )}
             >
-              AGRO BINATANI<br/><span className="text-sm font-medium opacity-80 leading-none block">LESTARI</span>
+              AGRO BINATANI<br/><span className="text-sm font-medium opacity-90 leading-none block">LESTARI</span>
             </span>
           </Link>
         </div>
@@ -122,12 +123,12 @@ export default function Header() {
             <div className="fixed inset-0 bg-black/20 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />
             <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 shadow-xl">
               <div className="flex items-center justify-between">
-                <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
-                  <div className="bg-[var(--color-palm-600)] text-white p-1.5 rounded-lg">
-                    <Leaf className="w-6 h-6" />
+                <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-3" onClick={() => setMobileMenuOpen(false)}>
+                  <div className="relative w-10 h-10 rounded-full overflow-hidden border border-gray-200">
+                    <Image src="/logo.jpg" alt="Logo" fill className="object-contain" />
                   </div>
                   <span className="font-bold text-lg tracking-tight text-[var(--color-forest-900)]">
-                    AGRO BINATANI
+                    AGRO BINATANI LESTARI
                   </span>
                 </Link>
                 <button

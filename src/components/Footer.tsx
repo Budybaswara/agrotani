@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Leaf, MapPin, Phone, Mail, Globe } from "lucide-react";
+import { MapPin, Phone, Mail, Globe } from "lucide-react";
+import Image from "next/image";
 
 const navigation = [
   { name: "Tentang", href: "/tentang" },
@@ -18,9 +19,9 @@ export default function Footer() {
           
           {/* Brand Info */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4 group inline-flex">
-              <div className="bg-[var(--color-palm-600)] text-white p-1.5 rounded-lg">
-                <Leaf className="w-6 h-6" />
+            <Link href="/" className="flex items-center gap-3 mb-4 group inline-flex">
+              <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 bg-white group-hover:border-[var(--color-gold-500)] transition-colors">
+                <Image src="/logo.jpg" alt="Logo Koperasi Agro Binatani Lestari" fill className="object-contain" />
               </div>
               <span className="font-bold text-lg tracking-tight">
                 AGRO BINATANI<br/><span className="text-sm font-medium opacity-80 leading-none block">LESTARI</span>
