@@ -104,13 +104,13 @@ export default function Header() {
             className="fixed inset-0 z-[150]"
           >
             <div className="fixed inset-0 bg-black/20 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />
-            <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 shadow-xl">
+            <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-4 py-4 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 shadow-xl">
               <div className="flex items-center justify-between">
                 <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-3" onClick={() => setMobileMenuOpen(false)}>
-                  <div className="relative w-10 h-10 rounded-full overflow-hidden border border-gray-200">
+                  <div className="relative w-8 h-8 rounded-full overflow-hidden border border-gray-200">
                     <Image src="/logo.jpg" alt="Logo" fill className="object-contain" />
                   </div>
-                  <span className="font-bold text-lg tracking-tight text-[var(--color-forest-900)]">
+                  <span className="font-bold text-base tracking-tight text-[var(--color-forest-900)]">
                     AGRO BINATANI LESTARI
                   </span>
                 </Link>
@@ -123,9 +123,9 @@ export default function Header() {
                   <X className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
-              <div className="mt-6 flow-root">
-                <div className="-my-6 divide-y divide-gray-500/10">
-                  <div className="space-y-2 py-6">
+              <div className="mt-4 flow-root">
+                <div className="-my-4 divide-y divide-gray-500/10">
+                  <div className="space-y-1 py-4">
                     {navigation.map((item) => {
                       const isActive = pathname === item.href;
                       return (
@@ -134,7 +134,7 @@ export default function Header() {
                           href={item.href}
                           onClick={() => setMobileMenuOpen(false)}
                           className={clsx(
-                            "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 transition-colors",
+                            "-mx-3 block rounded-lg px-3 py-1.5 text-sm font-semibold leading-7 hover:bg-gray-50 transition-colors",
                             isActive ? "text-[var(--color-forest-800)] bg-gray-50" : "text-gray-900"
                           )}
                         >
@@ -143,11 +143,11 @@ export default function Header() {
                       );
                     })}
                   </div>
-                  <div className="py-6">
+                  <div className="py-4">
                     <Link
                       href="/keanggotaan"
                       onClick={() => setMobileMenuOpen(false)}
-                      className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white bg-[var(--color-forest-800)] hover:bg-[var(--color-forest-700)] text-center transition-colors"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-sm font-semibold leading-7 text-white bg-[var(--color-forest-800)] hover:bg-[var(--color-forest-700)] text-center transition-colors"
                     >
                       Gabung Koperasi
                     </Link>
