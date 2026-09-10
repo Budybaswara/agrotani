@@ -53,15 +53,7 @@ export default function Header() {
           : "bg-transparent"
       )}
     >
-      {/* Announcement Bar */}
-      <div className={clsx(
-        "w-full bg-[var(--color-palm-700)] text-white overflow-hidden transition-all duration-300",
-        isScrolled ? "h-0 opacity-0" : "h-8 opacity-100 flex items-center"
-      )}>
-        <div className="animate-marquee text-xs sm:text-sm font-medium tracking-wide">
-          Selamat datang di website resmi Koperasi Agro Binatani Lestari - Bersama Membangun Ekonomi Desa
-        </div>
-      </div>
+
 
       <nav
         className={clsx(
@@ -70,23 +62,33 @@ export default function Header() {
         )}
         aria-label="Global"
       >
-        <div className="flex lg:flex-1">
+        <div className="flex lg:flex-none shrink-0">
           <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-3 group">
-            <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white/50 bg-white shadow-sm transition-transform group-hover:scale-105">
+            <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-white/50 bg-white shadow-sm transition-transform group-hover:scale-105">
               <Image src="/logo.jpg" alt="Logo Koperasi Agro Binatani Lestari" fill className="object-contain" />
             </div>
             <span
               className={clsx(
-                "font-bold text-lg tracking-tight transition-colors hidden sm:block",
+                "font-bold text-lg sm:text-xl tracking-tight transition-colors hidden sm:block",
                 isScrolled ? "text-[var(--color-forest-900)]" : "text-white drop-shadow-md"
               )}
             >
-              AGRO BINATANI<br/><span className="text-sm font-medium opacity-90 leading-none block">LESTARI</span>
+              AGRO BINATANI<br/><span className="text-xs sm:text-sm font-medium opacity-90 leading-none block">LESTARI</span>
             </span>
           </Link>
         </div>
         
-        <div className="flex lg:hidden">
+        {/* Running Text */}
+        <div className="flex-1 overflow-hidden px-3 sm:px-6 mx-2 border-l border-r border-white/10">
+          <div className={clsx(
+            "animate-marquee text-[11px] sm:text-sm font-medium tracking-wide whitespace-nowrap",
+            isScrolled ? "text-[var(--color-forest-900)]" : "text-white drop-shadow-md"
+          )}>
+            Selamat datang di website resmi Koperasi Agro Binatani Lestari - Bersama Membangun Ekonomi Desa
+          </div>
+        </div>
+
+        <div className="flex lg:hidden shrink-0">
           <button
             type="button"
             className={clsx(
@@ -120,14 +122,14 @@ export default function Header() {
           })}
         </div>
         
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        <div className="hidden lg:flex shrink-0">
           <Link
             href="/keanggotaan"
             className={clsx(
               "text-sm font-semibold leading-6 px-5 py-2.5 rounded-full transition-all duration-300",
               isScrolled
                 ? "bg-[var(--color-forest-800)] text-white hover:bg-[var(--color-forest-700)] shadow-sm"
-                : "bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm"
+                : "bg-[var(--color-palm-600)] text-white hover:bg-[var(--color-palm-500)] shadow-lg shadow-black/10"
             )}
           >
             Gabung Koperasi <span aria-hidden="true">&rarr;</span>

@@ -50,7 +50,7 @@ export default function HomeClient() {
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-forest-900)]/80 to-[var(--color-forest-900)]/40" />
         </div>
 
-        <div className="container-custom relative z-10 pt-20">
+        <div className="container-custom relative z-10 pt-32 md:pt-40">
           <motion.div
             initial="hidden"
             animate="visible"
