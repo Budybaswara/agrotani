@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   title: "Koperasi Agro Binatani Lestari | Mesuji, Lampung",
   description: "Koperasi Agro Binatani Lestari. Membangun ekosistem pertanian dan perkebunan yang produktif, transparan, dan berkelanjutan untuk kesejahteraan anggota.",
   keywords: ["Koperasi Mesuji", "Koperasi Way Serdang", "Koperasi Suka Agung", "Koperasi Kelapa Sawit Mesuji", "Agro Binatani Lestari"],
+  icons: {
+    icon: "/logo.jpg?v=2",
+    apple: "/logo.jpg?v=2",
+  },
 };
 
 export default function RootLayout({
