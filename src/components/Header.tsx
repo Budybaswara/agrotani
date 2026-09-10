@@ -21,33 +21,21 @@ const navigation = [
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsHidden(true);
-      } else {
-        setIsHidden(false);
-      }
-
-      setIsScrolled(currentScrollY > 20);
-      setLastScrollY(currentScrollY);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   return (
     <header
       className={clsx(
         "fixed inset-x-0 top-0 z-[100] transition-all duration-300 ease-in-out",
-        isHidden ? "-translate-y-full" : "translate-y-0",
         isScrolled
           ? "bg-white shadow-md"
           : "bg-transparent"
@@ -88,7 +76,7 @@ export default function Header() {
           </div>
         </div>
 
-        <div className="flex lg:hidden shrink-0">
+        <div className="flex shrink-0">
           <button
             type="button"
             className={clsx(
@@ -102,39 +90,7 @@ export default function Header() {
           </button>
         </div>
 
-        <div className="hidden lg:flex lg:gap-x-8">
-          {navigation.map((item) => {
-            const isActive = pathname === item.href || (pathname.startsWith(item.href) && item.href !== "/");
-            return (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={clsx(
-                  "text-sm font-semibold leading-6 transition-colors hover:text-[var(--color-gold-500)]",
-                  isScrolled 
-                    ? isActive ? "text-[var(--color-forest-800)]" : "text-gray-700"
-                    : isActive ? "text-white font-bold" : "text-white/90"
-                )}
-              >
-                {item.name}
-              </Link>
-            );
-          })}
-        </div>
-        
-        <div className="hidden lg:flex shrink-0">
-          <Link
-            href="/keanggotaan"
-            className={clsx(
-              "text-sm font-semibold leading-6 px-5 py-2.5 rounded-full transition-all duration-300",
-              isScrolled
-                ? "bg-[var(--color-forest-800)] text-white hover:bg-[var(--color-forest-700)] shadow-sm"
-                : "bg-[var(--color-palm-600)] text-white hover:bg-[var(--color-palm-500)] shadow-lg shadow-black/10"
-            )}
-          >
-            Gabung Koperasi <span aria-hidden="true">&rarr;</span>
-          </Link>
-        </div>
+
       </nav>
 
       {/* Mobile menu */}
@@ -145,7 +101,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 lg:hidden"
+            className="fixed inset-0 z-[150]"
           >
             <div className="fixed inset-0 bg-black/20 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />
             <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 shadow-xl">
