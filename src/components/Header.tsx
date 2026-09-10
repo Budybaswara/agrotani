@@ -21,28 +21,53 @@ const navigation = [
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsHidden(true);
+      } else {
+        setIsHidden(false);
+      }
+
+      setIsScrolled(currentScrollY > 20);
+      setLastScrollY(currentScrollY);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   return (
     <header
       className={clsx(
         "fixed inset-x-0 top-0 z-[100] transition-all duration-300 ease-in-out",
+        isHidden ? "-translate-y-full" : "translate-y-0",
         isScrolled
-          ? "bg-white shadow-md py-2"
-          : "bg-transparent py-4"
+          ? "bg-white shadow-md"
+          : "bg-transparent"
       )}
     >
+      {/* Announcement Bar */}
+      <div className={clsx(
+        "w-full bg-[var(--color-palm-700)] text-white overflow-hidden transition-all duration-300",
+        isScrolled ? "h-0 opacity-0" : "h-8 opacity-100 flex items-center"
+      )}>
+        <div className="animate-marquee text-xs sm:text-sm font-medium tracking-wide">
+          Selamat datang di website resmi Koperasi Agro Binatani Lestari - Bersama Membangun Ekonomi Desa
+        </div>
+      </div>
+
       <nav
-        className="container-custom flex items-center justify-between"
+        className={clsx(
+          "container-custom flex items-center justify-between transition-all duration-300",
+          isScrolled ? "py-2" : "py-4"
+        )}
         aria-label="Global"
       >
         <div className="flex lg:flex-1">

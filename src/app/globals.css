@@ -51,3 +51,14 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+@keyframes marquee {
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
+
+@utility animate-marquee {
+  display: inline-block;
+  animation: marquee 25s linear infinite;
+  white-space: nowrap;
+}

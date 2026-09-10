@@ -21,17 +21,17 @@ const staggerContainer = {
 };
 
 const businessUnits = [
-  { name: "Jual Beli Kelapa Sawit", icon: Leaf, featured: true },
-  { name: "Waserda", icon: ShoppingCart },
-  { name: "Simpan Pinjam", icon: Landmark },
-  { name: "Pupuk & Obat Tanaman", icon: Droplets },
-  { name: "Jasa Kontraktor", icon: Briefcase },
-  { name: "Pengolahan Limbah", icon: Factory },
-  { name: "Pertanian", icon: Wheat },
-  { name: "Perikanan", icon: Fish },
-  { name: "Peternakan", icon: Rabbit },
-  { name: "Bengkel", icon: Wrench },
-  { name: "Perkebunan Lainnya", icon: Sprout },
+  { name: "Jual Beli Kelapa Sawit", icon: Leaf, featured: true, desc: "Layanan utama perdagangan kelapa sawit dari petani ke pabrik dengan harga transparan dan kompetitif." },
+  { name: "Waserda", icon: ShoppingCart, desc: "Penyediaan sembako dan kebutuhan sehari-hari untuk anggota koperasi dan masyarakat." },
+  { name: "Simpan Pinjam", icon: Landmark, desc: "Layanan permodalan dan penyediaan dana khusus anggota dengan margin terjangkau." },
+  { name: "Pupuk & Obat Tanaman", icon: Droplets, desc: "Penyediaan sarana produksi pertanian dan perkebunan berkualitas." },
+  { name: "Jasa Kontraktor", icon: Briefcase, desc: "Jasa angkutan, infrastruktur, dan pembukaan lahan perkebunan." },
+  { name: "Pengolahan Limbah", icon: Factory, desc: "Pengelolaan limbah menjadi produk bernilai tambah berkelanjutan." },
+  { name: "Pertanian", icon: Wheat, desc: "Pengembangan komoditas padi, palawija, dan sayuran komersial." },
+  { name: "Perikanan", icon: Fish, desc: "Budidaya ikan air tawar untuk ketahanan pangan anggota." },
+  { name: "Peternakan", icon: Rabbit, desc: "Peternakan sapi, kambing, dan unggas yang terintegrasi." },
+  { name: "Bengkel", icon: Wrench, desc: "Layanan perbaikan alat berat dan kendaraan operasional." },
+  { name: "Perkebunan Lainnya", icon: Sprout, desc: "Pengembangan komoditas karet dan komoditas bernilai tinggi lainnya." },
 ];
 
 export default function HomeClient() {
@@ -199,9 +199,12 @@ export default function HomeClient() {
                     }`}>
                       <Icon className="w-7 h-7" />
                     </div>
-                    <h3 className={`text-xl font-bold ${unit.featured ? "text-white text-3xl" : "text-[var(--color-forest-900)]"}`}>
+                    <h3 className={`text-xl font-bold mb-3 ${unit.featured ? "text-white text-3xl" : "text-[var(--color-forest-900)]"}`}>
                       {unit.name}
                     </h3>
+                    <p className={`text-sm leading-relaxed ${unit.featured ? "text-white/90 max-w-md" : "text-gray-600"}`}>
+                      {unit.desc}
+                    </p>
                   </div>
                 </motion.div>
               );
